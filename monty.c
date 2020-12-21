@@ -1,6 +1,6 @@
 #include "monty.h"
 
-data_t data;
+data_t data = INIT_DATA;
 
 /**
  * main - entry point
@@ -10,23 +10,12 @@ data_t data;
  */
 int main(int argc, char **argv)
 {
-	initData();
 	initialChk(argc, argv[1]);
 	parse();
+/*
 	freeAll();
+*/
 	return (EXIT_SUCCESS);
-}
-
-/**
- * initData - initializes data struct
- */
-void initData(void)
-{
-	data.fp = NULL;
-	data.stack = NULL;
-	data.line = NULL;
-	data.lineN = 1;
-	data.queue = 0;
 }
 
 /**
@@ -38,14 +27,14 @@ void initialChk(int ac, char *file)
 {
 	if (ac != 2)
 	{
-		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		dprintf(STDERR_FILENO, USAGE);
 		exit(EXIT_FAILURE);
 	}
 
 	data.fp = fopen(file, "r");
-	if (!data.fp)
+	if (!(data.fp))
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", file);
+		dprintf(STDERR_FILENO, ERR_FILE, file);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -59,21 +48,12 @@ void parse(void)
 	ssize_t read;
 	char *op, *value;
 
-	while ((read = getline(&data.line, &size, data.fp)) != -1)
+	while ((read = getline(&(data.line), &size, data.fp)) != -1)
 	{
 		op = strtok(data.line, DELIMITERS);
-		if (*op == '#')
-		{
-			data.lineN++;
-			continue;
-		}
-		if (strcmp(op, "push") == 0)
-		{
-			value = strtok(NULL, DELIMITERS);
-			data.lineN++;
-			continue;
-		}
-		getOp(&data.stack, op);
+		data.cmd = op;
+		data.value = strtok(NULL, " ");
+		getOp();
 		data.lineN++;
 	}
 }

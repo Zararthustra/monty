@@ -2,27 +2,24 @@
 
 /**
  * getOp - finds and executes a function based on op
- * @stack: double pointer to head of stack
- * @op: command to be executed
  */
-void getOp(stack_t **stack, char *op)
+void getOp(void)
 {
 	int idx;
-	char *command;
+
 	instruction_t opDict[] = {
+		{"push", getPush},
 		{"pall", getPall},
 		{NULL, NULL}
 	};
 
-	command = strtok(op, "\n");
 	for (idx = 0; opDict[idx].opcode; idx++)
-		if (strcmp(command, opDict[idx].opcode) == 0)
+		if (strcmp(data.cmd, opDict[idx].opcode) == 0)
 		{
-			opDict[idx].f(stack, data.lineN);
+			opDict[idx].f(&data.stack, data.lineN);
 			return;
 		}
-	dprintf(STDERR_FILENO, "L%d: ", data.lineN);
-	dprintf(STDERR_FILENO, "unknown instruction %s\n", op);
+	dprintf(STDERR_FILENO, ERR_OPCODE, data.lineN, data.cmd);
 	freeAll();
 	exit(EXIT_FAILURE);
 }
@@ -47,9 +44,9 @@ void freeStack(stack_t *head)
  * freeAll - frees all malloc'ed data structures and closes
  * file decriptor
  */
-void freeAll(void)
+void freeAll(data_t *data)
 {
-	fclose(data.fp);
-	free(data.line);
-	freeStack(data.stack);
+	fclose(data->fp);
+	free(data->line);
+	freeStack(data->stack);
 }
