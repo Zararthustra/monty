@@ -26,11 +26,10 @@ void getOp(void)
 
 /**
  * freeStack - frees a stack_t list
- * @head: pointer to the head of the list
  */
-void freeStack(stack_t *head)
+void freeStack(void)
 {
-	stack_t *tmp, *current = head;
+	stack_t *tmp, *current = data.stack;
 
 	while (current)
 	{
@@ -44,9 +43,9 @@ void freeStack(stack_t *head)
  * freeAll - frees all malloc'ed data structures and closes
  * file decriptor
  */
-void freeAll(data_t *data)
+void freeAll(void)
 {
-	fclose(data->fp);
-	free(data->line);
-	freeStack(data->stack);
+	fclose(data.fp);
+	free(data.line);
+	freeStack();
 }

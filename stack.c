@@ -9,12 +9,17 @@ int is_num(char *str)
 {
 	if (!str)
 		return (0);
+
 	if (*str == '+' || *str == '-')
 		str++;
+
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
+		{
+			printf("pas %d\n", *str);
 			return (0);
+		}
 		str++;
 	}
 	return (1);

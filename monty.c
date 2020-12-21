@@ -12,9 +12,9 @@ int main(int argc, char **argv)
 {
 	initialChk(argc, argv[1]);
 	parse();
-/*
+
 	freeAll();
-*/
+
 	return (EXIT_SUCCESS);
 }
 
@@ -46,13 +46,13 @@ void parse(void)
 {
 	size_t size = 0;
 	ssize_t read;
-	char *op, *value;
+	char *op;
 
 	while ((read = getline(&(data.line), &size, data.fp)) != -1)
 	{
 		op = strtok(data.line, DELIMITERS);
 		data.cmd = op;
-		data.value = strtok(NULL, " ");
+		data.value = strtok(NULL, DELIMITERS);
 		getOp();
 		data.lineN++;
 	}
