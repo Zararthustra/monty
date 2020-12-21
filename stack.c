@@ -16,10 +16,7 @@ int is_num(char *str)
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
-		{
-			printf("pas %d\n", *str);
 			return (0);
-		}
 		str++;
 	}
 	return (1);
