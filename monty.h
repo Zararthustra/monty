@@ -15,11 +15,24 @@
 
 #define DELIMITERS " \t\r\n\v\f"
 #define INIT_DATA {NULL, NULL, NULL, 1, NULL, NULL, 0, 0}
+
 #define USAGE "USAGE: monty file\n"
 #define ERR_FILE "Error: Can't open file %s\n"
 #define ERR_OPCODE "L%d: unknown instruction %s\n"
 #define ERR_MALLOC "Error: malloc failed\n"
 #define ERR_PUSH "L%d: usage: push integer\n"
+#define ERR_PINT "L%d: can't pint, stack empty\n"
+#define ERR_PUSH "L%d: usage: push integer\n"
+#define ERR_POP "L%d: can't pop an empty stack\n"
+#define ERR_SWAP "L%d: can't swap, stack too short\n"
+#define ERR_ADD "L%d: can't add, stack too short\n"
+#define ERR_SUB "L%d: can't sub, stack too short\n"
+#define ERR_DIV "L%d: can't div, stack too short\n"
+#define ERR_MUL "L%d: can't mul, stack too short\n"
+#define ERR_ZERO "L%d: division by zero\n"
+#define ERR_MOD "L%d: can't mod, stack too short\n"
+#define ERR_PCHAR "L%d: can't pchar, stack empty\n"
+#define ERR_NOCHAR "L%d: can't pchar, value out of range\n"
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -94,6 +107,24 @@ void freeAll(void);
 void getPush(stack_t **stack, unsigned int line_number);
 void getPall(stack_t **stack, unsigned int line_number);
 
+/* ops.c module*/
+void getAdd(stack_t **stack, unsigned int line_number);
+void getSub(stack_t **stack, unsigned int line_number);
+void getMul(stack_t **stack, unsigned int line_number);
+void getDiv(stack_t **stack, unsigned int line_number);
+void getMod(stack_t **stack, unsigned int line_number);
+
+/* ops2.c module*/
+void getPchar(stack_t **stack, unsigned int line_number);
+void getPstr(stack_t **stack, unsigned int line_number);
+void getPint(stack_t **stack, unsigned int line_number);
+void getPop(stack_t **stack, unsigned int line_number);
+void getSwap(stack_t **stack, unsigned int line_number);
+
+/* ops3.c module*/
+void getRotl(stack_t **stack, unsigned int line_number);
+void getRotr(stack_t **stack, unsigned int line_number);
+
 /* stack.c module */
 int is_num(char *str);
 int push(int n);
@@ -103,5 +134,6 @@ size_t print_dlistint(const dlistint_t *h);
 dlistint_t *add_dnodeint(dlistint_t **head, const int n);
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
 size_t dlistint_len(const dlistint_t *h);
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
 
 #endif

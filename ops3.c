@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * rotl - 
- *
- *
- *
+ * getRotl - rotates the stack to the top.
+ * @stack: stack
+ * @line_number: line number
+ * Return: void
  */
 
-void rotl(stack_t **stack, unsigned int lineN)
+void getRotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t **tmp;
 
@@ -23,13 +23,13 @@ void rotl(stack_t **stack, unsigned int lineN)
 }
 
 /**
- * rotr - 
- *
- *
- *
+ * getRotr -  rotates the stack to the rear.
+ * @stack: stack
+ * @line_number: line number
+ * Return: void
  */
 
-void rotr(stack_t **stack, unsigned int lineN)
+void getRotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t **tmp;
 

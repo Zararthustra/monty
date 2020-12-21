@@ -10,6 +10,18 @@ void getOp(void)
 	instruction_t opDict[] = {
 		{"push", getPush},
 		{"pall", getPall},
+		{"pchar", getPchar},
+		{"pstr", getPstr},
+		{"pint", getPint},
+		{"pop", getPop},
+		{"swap", getSwap},
+		{"add", getAdd},
+		{"sub", getSub},
+		{"mul", getMul},
+		{"div", getDiv},
+		{"mod", getMod},
+		{"rotl", getRotl},
+		{"rotr", getRotr},
 		{NULL, NULL}
 	};
 
