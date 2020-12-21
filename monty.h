@@ -81,14 +81,14 @@ extern data_t data;
 
 /* monty.c module */
 int main(int argc, char **argv);
-void initData();
+void initData(void);
 void initialChk(int ac, char *file);
-void parse();
+void parse(void);
 
 /* opcode.c module */
-void getOp();
-void freeStack();
-void freeAll();
+void getOp(void);
+void freeStack(void);
+void freeAll(void);
 
 /* getOps.c module */
 void getPush(stack_t **stack, unsigned int line_number);
