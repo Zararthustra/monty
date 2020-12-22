@@ -27,18 +27,16 @@ void getRotl(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (!stack)
+	if (!stack || !tmp || !tmp->next)
 		return;
-	if (tmp && tmp->next)
-	{
-		n = tmp->n;
-		while (tmp->next)
-		{
-			tmp->n = tmp->next->n;
-			tmp = tmp->next;
-		}
-		tmp->n = n;
-	}
+
+       	n = tmp->n;
+       	while (tmp->next)
+       	{
+       		tmp->n = tmp->next->n;
+       		tmp = tmp->next;
+       	}
+       	tmp->n = n;
 }
 
 /**
