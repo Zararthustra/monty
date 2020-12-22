@@ -8,11 +8,28 @@
  */
 int main(int argc, char **argv)
 {
+	initData();
 	initialChk(argc, argv[1]);
 	parse();
 	freeAll();
 
 	return (EXIT_SUCCESS);
+}
+
+/**
+ * initData - initialize global variables
+ *
+ */
+void initData(void)
+{
+	data.fp = NULL;
+	data.stack = NULL;
+	data.line = NULL;
+	data.lineN = 1;
+	data.cmd = NULL;
+	data.value = NULL;
+	data.numW = 0;
+	data.queue = 0;
 }
 
 /**
@@ -50,7 +67,7 @@ void parse(void)
 		if (read == 0)
 			continue;
 		op = strtok(data.line, DELIMITERS);
-		if (*op == '#' || *op == '\n')
+		if (!op ||*op == '#' || *op == '\n')
 		{
 			data.lineN++;
 			continue;
