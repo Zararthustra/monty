@@ -49,6 +49,8 @@ void parse(void)
 
 	while ((read = getline(&(data.line), &size, data.fp)) != -1)
 	{
+		if (read == -1)
+			break;
 		op = strtok(data.line, DELIMITERS);
 		if (*op == '#' || *op == '\n')
 		{
