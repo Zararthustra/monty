@@ -38,26 +38,28 @@ $ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
 | Opcode | Description |
 | --- | --- |
 | push | Pushes an element to the stack |
-| pall | prints all the values on the stack, starting from the top of the stack |
-| pint | prints the value at the top of the stack |
-| pop | removes the top element of the stack |
-| swap | swaps the top two elements of the stack |
-| add | adds the top two elements of the stack |
-| sub | subtracts the top element of the stack from the second top element of the stack |
-| mul | multiplies the second top element of the stack with the top element of the stack |
-| div | divides the second top element of the stack by the top element of the stack |
-| mod | computes the rest of the division of the second top element of the stack by the top element of the stack |
-| pchar | prints the char at the top of the stack, followed by a new line |
-| pstr | prints the string starting at the top of the stack, followed by a new line |
-| rotr | rotates the stack to the bottom |
-| rotl | rotates the stack to the top |
-| nop | doesnt do anything |
+| pall | Prints all the values on the stack, starting from the top of the stack |
+| pint | Prints the value at the top of the stack |
+| pop | Removes the top element of the stack |
+| swap | Swaps the top two elements of the stack |
+| add | Adds the top two elements of the stack |
+| sub | Subtracts the top element of the stack from the second top element of the stack |
+| mul | Multiplies the second top element of the stack with the top element of the stack |
+| div | Divides the second top element of the stack by the top element of the stack |
+| mod | Computes the rest of the division of the second top element of the stack by the top element of the stack |
+| pchar | Prints the char at the top of the stack, followed by a new line |
+| pstr | Prints the string starting at the top of the stack, followed by a new line |
+| rotr | Rotates the stack to the bottom |
+| rotl | Rotates the stack to the top |
+| nop | Doesnt do anything |
+| stack | (Default) LIFO |
+| queue | Set to FIFO |
 
 ## Learning Objectives
 
-* What do LIFO and FIFO mean
-* What is a stack, and when to use it
-* What is a queue, and when to use it
-* What are the common implementations of stacks and queues
-* What are the most common use cases of stacks and queues
-* What is the proper way to use global variables
+- What do LIFO and FIFO mean
+- What is a stack, and when to use it
+- What is a queue, and when to use it
+- What are the common implementations of stacks and queues
+- What are the most common use cases of stacks and queues
+- What is the proper way to use global variables
