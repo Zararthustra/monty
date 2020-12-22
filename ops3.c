@@ -27,7 +27,7 @@ void getRotl(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (tmp)
+	if (tmp && tmp->next)
 	{
 		cur = tmp->next;
 		n = tmp->n;
