@@ -126,6 +126,7 @@ void getSwap(stack_t **stack, unsigned int line_number);
 /* ops3.c module*/
 void getRotl(stack_t **stack, unsigned int line_number);
 void getRotr(stack_t **stack, unsigned int line_number);
+void getNop(stack_t **stack, unsigned int line_number);
 
 /* stack.c module */
 int is_num(char *str);

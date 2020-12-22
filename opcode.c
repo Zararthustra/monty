@@ -20,9 +20,9 @@ void getOp(void)
 		{"mod", getMod},
 		{"pchar", getPchar},
 		{"pstr", getPstr},
-/*		{"rotl", getRotl},
+		{"rotl", getRotl},
 		{"rotr", getRotr},
-*/
+		{"nop", getNop},
 		{NULL, NULL}
 	};
 
