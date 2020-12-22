@@ -18,9 +18,9 @@ void getOp(void)
 		{"mul", getMul},
 		{"div", getDiv},
 		{"mod", getMod},
-/*		{"pchar", getPchar},
+		{"pchar", getPchar},
 		{"pstr", getPstr},
-		{"rotl", getRotl},
+/*		{"rotl", getRotl},
 		{"rotr", getRotr},
 */
 		{NULL, NULL}

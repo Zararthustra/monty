@@ -5,48 +5,55 @@
  * @stack: stack
  * @line_number: line number
  * Return: void
- *
+ */
 
 void getPchar(stack_t **stack, unsigned int line_number)
 {
-	if (!stack)
+	stack_t *tmp = *stack;
+
+	if (!tmp)
 	{
 		dprintf(STDERR_FILENO, ERR_PCHAR, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	if (stack->n < 0 || stack->n > 127)
+	if (tmp->n < 0 || tmp->n > 127)
 	{
 		dprintf(STDERR_FILENO, ERR_NOCHAR, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", itoa(stack->n));
+	printf("%c\n", tmp->n);
 }
 
-**
+/**
  * getPstr - prints the string starting at the top of the stack
  * @stack: stack
  * @line_number: line number
  * Return: void
- *
+ */
 
 void getPstr(stack_t **stack, unsigned int line_number)
 {
-	if (!stack)
+	stack_t *tmp = *stack;
+
+	(void)line_number;
+	if (!tmp)
 	{
 		printf("\n");
 	}
-	while (stack)
+	while (tmp)
 	{
-		if (stack->n < 1 || stack->n > 127)
+		if (tmp->n < 1 || tmp->n > 127)
 		{
 			return;
 		}
-		printf("%c", itoa(stack->n));
-		stack = stack->next;
+		printf("%c", tmp->n);
+		tmp = tmp->next;
 	}
 }
 
-**
+/**
  * getPop - removes the top element of the stack
  * @stack: stack
  * @line_number: line number
