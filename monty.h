@@ -90,7 +90,7 @@ typedef struct data_s
 	int queue;
 } data_t;
 
-extern data_t data;
+data_t data;
 
 /* monty.c module */
 int main(int argc, char **argv);

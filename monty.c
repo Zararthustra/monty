@@ -1,7 +1,5 @@
 #include "monty.h"
 
-data_t data = INIT_DATA;
-
 /**
  * main - entry point
  * @argc: argument count
@@ -45,14 +43,14 @@ void parse(void)
 {
 	size_t size = 0;
 	ssize_t read;
-	char *op;
+	char *op = NULL;
 
 	while ((read = getline(&(data.line), &size, data.fp)) != -1)
 	{
 		if (read == 1)
 			continue;
 		op = strtok(data.line, DELIMITERS);
-		if (*op == '#' || *op == '\n')
+		if (op == NULL || *op == '#' || *op == '\n')
 		{
 			data.lineN++;
 			continue;
