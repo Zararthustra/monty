@@ -50,7 +50,7 @@ void parse(void)
 		if (read == 0)
 			continue;
 		op = strtok(data.line, DELIMITERS);
-		if (op == NULL || *op == '#' || *op == '\n')
+		if (*op == '#' || *op == '\n')
 		{
 			data.lineN++;
 			continue;
