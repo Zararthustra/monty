@@ -44,7 +44,7 @@ void getPstr(stack_t **stack, unsigned int line_number)
 	}
 	while (tmp)
 	{
-		if (tmp->n < 1 || tmp->n > 127)
+		if (tmp->n < 1 || tmp->n > 127 || tmp->n == 0)
 		{
 			return;
 		}
