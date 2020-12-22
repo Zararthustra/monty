@@ -38,3 +38,23 @@ void getPall(stack_t **stack, unsigned int line_number)
 	print_dlistint(*stack);
 }
 
+/**
+ * getPint - prints the value at the top of the stack
+ * @stack: stack
+ * @line_number: line number
+ * Return: void
+ */
+
+void getPint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	if (!current)
+	{
+		dprintf(STDERR_FILENO, ERR_PINT, line_number);
+		freeAll();
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", current->n);
+}
+
