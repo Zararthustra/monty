@@ -13,6 +13,7 @@ void getOp(void)
 		{"pint", getPint},
 		{"pop", getPop},
 		{"swap", getSwap},
+		{"nop", getNop},
 		{"add", getAdd},
 		{"sub", getSub},
 		{"mul", getMul},
@@ -22,7 +23,8 @@ void getOp(void)
 		{"pstr", getPstr},
 		{"rotl", getRotl},
 		{"rotr", getRotr},
-		{"nop", getNop},
+		{"queue", getQueue},
+		{"stack", getStack},
 		{NULL, NULL}
 	};
 

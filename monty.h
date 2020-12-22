@@ -108,6 +108,7 @@ void getPush(stack_t **stack, unsigned int line_number);
 void getPall(stack_t **stack, unsigned int line_number);
 void getQueue(stack_t **stack, unsigned int line_number);
 void getStack(stack_t **stack, unsigned int line_number);
+void getPint(stack_t **stack, unsigned int line_number);
 
 /* ops.c module*/
 void getAdd(stack_t **stack, unsigned int line_number);
@@ -119,14 +120,13 @@ void getMod(stack_t **stack, unsigned int line_number);
 /* ops2.c module*/
 void getPchar(stack_t **stack, unsigned int line_number);
 void getPstr(stack_t **stack, unsigned int line_number);
-void getPint(stack_t **stack, unsigned int line_number);
 void getPop(stack_t **stack, unsigned int line_number);
 void getSwap(stack_t **stack, unsigned int line_number);
 
 /* ops3.c module*/
+void getNop(stack_t **stack, unsigned int line_number);
 void getRotl(stack_t **stack, unsigned int line_number);
 void getRotr(stack_t **stack, unsigned int line_number);
-void getNop(stack_t **stack, unsigned int line_number);
 
 /* stack.c module */
 int is_num(char *str);
@@ -136,7 +136,5 @@ int push(int n);
 size_t print_dlistint(const dlistint_t *h);
 dlistint_t *add_dnodeint(dlistint_t **head, const int n);
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
-size_t dlistint_len(const dlistint_t *h);
-dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
 
 #endif
