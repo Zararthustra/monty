@@ -38,19 +38,21 @@ void getPstr(stack_t **stack, unsigned int line_number)
 	stack_t *tmp = *stack;
 
 	(void)line_number;
+
 	if (!tmp)
 	{
 		printf("\n");
 	}
-	while (tmp)
+	while (tmp && tmp->n)
 	{
-		if (tmp->n < 1 || tmp->n > 127 || tmp->n == 0)
+		if (tmp->n < 0 || tmp->n > 127)
 		{
-			return;
+			break;
 		}
-		printf("%c", tmp->n);
+		putchar(tmp->n);
 		tmp = tmp->next;
 	}
+	putchar('\n');
 }
 
 /**
