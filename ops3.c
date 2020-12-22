@@ -37,7 +37,7 @@ void getRotl(stack_t **stack, unsigned int line_number)
 			tmp = cur;
 			cur = tmp->next;
 	        }
-		tmp->b = n;
+		tmp->n = n;
 	}
 }
 
