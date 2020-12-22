@@ -69,7 +69,7 @@ void getPop(stack_t **stack, unsigned int line_number)
 		freeAll();
 		exit(EXIT_FAILURE);
 	}
-       	tmp = cur->next;
+	tmp = cur->next;
 	free(cur);
 	*stack = tmp;
 	if (tmp)

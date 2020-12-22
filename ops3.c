@@ -30,13 +30,13 @@ void getRotl(stack_t **stack, unsigned int line_number)
 	if (!stack || !tmp || !tmp->next)
 		return;
 
-       	n = tmp->n;
-       	while (tmp->next)
-       	{
-       		tmp->n = tmp->next->n;
-       		tmp = tmp->next;
-       	}
-       	tmp->n = n;
+	n = tmp->n;
+	while (tmp->next)
+	{
+		tmp->n = tmp->next->n;
+		tmp = tmp->next;
+	}
+	tmp->n = n;
 }
 
 /**
@@ -53,21 +53,18 @@ void getRotr(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (!stack)
+	if (!stack || !tmp || !tmp->next)
 		return;
 
-	if (tmp && tmp->next)
+	while (tmp->next)
+		tmp = tmp->next;
+	cur = tmp->prev;
+	n = tmp->n;
+	while (tmp->prev)
 	{
-		while (tmp->next)
-			tmp = tmp->next;
+		tmp->n = cur->n;
+		tmp = cur;
 		cur = tmp->prev;
-		n = tmp->n;
-		while (tmp->prev)
-		{
-			tmp->n = cur->n;
-			tmp = cur;
-			cur = tmp->prev;
-		}
-		tmp->n = n;
 	}
+	tmp->n = n;
 }
