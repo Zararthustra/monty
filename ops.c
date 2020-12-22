@@ -32,17 +32,19 @@ void getAdd(stack_t **stack, unsigned int line_number)
 
 void getSub(stack_t **stack, unsigned int line_number)
 {
-	stack_t **tmp;
+	stack_t *tmp = *stack;
+	int n;
 
-	len = dlistint_len(stack);
-	if (len < 2)
+	if (!tmp || !tmp->next)
 	{
 		dprintf(STDERR_FILENO, ERR_SUB, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	tmp->n = stack->n;
-	pop(stack, line_number);
-	stack->n -= tmp->n;
+	n = tmp->n;
+	tmp = tmp->next;
+	tmp->n -= n;
+	getPop(stack, line_number);
 }
 
 /**
@@ -50,76 +52,81 @@ void getSub(stack_t **stack, unsigned int line_number)
  * @stack: head of list
  * @line_number: line number
  * Return: void
- *
+ */
 
 void getMul(stack_t **stack, unsigned int line_number)
 {
-	size_t len;
-	stack_t **tmp;
+	stack_t *tmp = *stack;
+	int n;
 
-	len = dlistint_len(stack);
-	if (len < 2)
+	if (!tmp || !tmp->next)
 	{
 		dprintf(STDERR_FILENO, ERR_MUL, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	tmp->n = stack->n;
-	pop(stack, line_number);
-	stack->n *= tmp->n;
+	n = tmp->n;
+	tmp = tmp->next;
+	tmp->n *= n;
+	getPop(stack, line_number);
 }
 
-**
+/**
  * getDiv - divide the second by the top element of the stack
  * @stack: head of list
  * @line_number: line number
  * Return: void
- *
+ */
 
 void getDiv(stack_t **stack, unsigned int line_number)
 {
-	size_t len;
-	stack_t **tmp;
+	stack_t *tmp = *stack;
+	int n;
 
-	len = dlistint_len(stack);
-	if (len < 2)
+	if (!tmp || !tmp->next)
 	{
 		dprintf(STDERR_FILENO, ERR_DIV, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	if (stack->n == 0)
+	if (tmp->n == 0)
 	{
 		dprintf(STDERR_FILENO, ERR_ZERO, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	tmp->n = stack->n;
-	pop(stack, line_number);
-	stack->n /= tmp->n;
+	n = tmp->n;
+	tmp = tmp->next;
+	tmp->n /= n;
+	getPop(stack, line_number);
 }
 
-**
+/**
  * getMod - modulo the second by the top element of the stack
  * @stack: head of list
  * @line_number: line number
  * Return: void
- *
+ */
 
 void getMod(stack_t **stack, unsigned int line_number)
 {
-	size_t len;
-	stack_t **tmp;
+	stack_t *tmp = *stack;
+	int n;
 
-	len = dlistint_len(stack);
-	if (len < 2)
+	if (!tmp || !tmp->next)
 	{
 		dprintf(STDERR_FILENO, ERR_MOD, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	if (stack->n == 0)
+	if (tmp->n == 0)
 	{
 		dprintf(STDERR_FILENO, ERR_ZERO, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	tmp->n = stack->n;
-	pop(stack, line_number);
-	stack->n %= tmp->n;
-}*/
+	n = tmp->n;
+	tmp = tmp->next;
+	tmp->n %= n;
+	getPop(stack, line_number);
+}
