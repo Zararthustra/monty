@@ -1,6 +1,19 @@
 #include "monty.h"
 
 /**
+ * getNop - doesnt do anything.
+ * @stack: head of the stack
+ * @line_number: line number
+ * Return: void
+ */
+void getNop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+        (void)line_number;
+}
+
+
+/**
  * getRotl - rotates the stack to the top.
  * @stack: stack
  * @line_number: line number
@@ -9,17 +22,23 @@
 
 void getRotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t **tmp;
+	int n;
+	stack_t *tmp = *stack, *cur;
 
-	(void)lineN;
-	tmp = stack;
-	while (stack)
+	(void)line_number;
+
+	if (tmp)
 	{
-		stack->n = stack->next->n;
-		stack = stack->next;
+		cur = tmp->next;
+		n = tmp->n;
+		while (tmp->next)
+		{
+			tmp->n = cur->n;
+			tmp = cur;
+			cur = tmp->next;
+	        }
+		tmp->b = n;
 	}
-	stack = tmp;
-	stack->next = NULL;
 }
 
 /**
@@ -31,17 +50,23 @@ void getRotl(stack_t **stack, unsigned int line_number)
 
 void getRotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t **tmp;
+	int n;
+	stack_t *tmp = *stack, *cur;
 
-	(void)lineN;
-	while (stack)
-		stack = stack->next;
-	tmp = stack;
-	while (stack)
+	(void)line_number;
+
+	if (tmp)
 	{
-		stack->n = stack->prev->n;
-		stack = stack->prev;
+		while (tmp->next)
+			tmp = tmp->next;
+		cur = tmp->prev;
+		n = tmp->n;
+		while (tmp->prev)
+		{
+			tmp->n = cur->n;
+			tmp = cur;
+			cur = tmp->prev;
+		}
+		tmp->n = n;
 	}
-	stack = tmp;
-	stack->prev = NULL;
 }
