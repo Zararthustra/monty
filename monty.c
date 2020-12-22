@@ -67,7 +67,7 @@ void parse(void)
 		if (read == 0)
 			continue;
 		op = strtok(data.line, DELIMITERS);
-		if (!op ||*op == '#' || *op == '\n')
+		if (!op || *op == '#' || *op == '\n')
 		{
 			data.lineN++;
 			continue;
