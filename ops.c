@@ -9,18 +9,18 @@
 
 void getAdd(stack_t **stack, unsigned int line_number)
 {
-	size_t len;
-	stack_t **tmp;
+	stack_t *tmp = *stack;
+	stack_t *cur;
 
-	len = dlistint_len(stack);
-	if (len < 2)
+	if (!tmp || !tmp->next)
 	{
 		dprintf(STDERR_FILENO, ERR_ADD, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	tmp->n = stack->n;
-	pop(stack, lineN);
-	stack->n += tmp->n;
+	cur = tmp->next;
+	cur->n += tmp->n;
+	getPop(stack, line_number);
 }
 
 /**
@@ -32,7 +32,6 @@ void getAdd(stack_t **stack, unsigned int line_number)
 
 void getSub(stack_t **stack, unsigned int line_number)
 {
-	size_t len;
 	stack_t **tmp;
 
 	len = dlistint_len(stack);
@@ -51,7 +50,7 @@ void getSub(stack_t **stack, unsigned int line_number)
  * @stack: head of list
  * @line_number: line number
  * Return: void
- */
+ *
 
 void getMul(stack_t **stack, unsigned int line_number)
 {
@@ -69,12 +68,12 @@ void getMul(stack_t **stack, unsigned int line_number)
 	stack->n *= tmp->n;
 }
 
-/**
+**
  * getDiv - divide the second by the top element of the stack
  * @stack: head of list
  * @line_number: line number
  * Return: void
- */
+ *
 
 void getDiv(stack_t **stack, unsigned int line_number)
 {
@@ -97,12 +96,12 @@ void getDiv(stack_t **stack, unsigned int line_number)
 	stack->n /= tmp->n;
 }
 
-/**
+**
  * getMod - modulo the second by the top element of the stack
  * @stack: head of list
  * @line_number: line number
  * Return: void
- */
+ *
 
 void getMod(stack_t **stack, unsigned int line_number)
 {
@@ -123,4 +122,4 @@ void getMod(stack_t **stack, unsigned int line_number)
 	tmp->n = stack->n;
 	pop(stack, line_number);
 	stack->n %= tmp->n;
-}
+}*/

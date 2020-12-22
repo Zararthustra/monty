@@ -5,7 +5,7 @@
  * @stack: stack
  * @line_number: line number
  * Return: void
- */
+ *
 
 void getPchar(stack_t **stack, unsigned int line_number)
 {
@@ -22,12 +22,12 @@ void getPchar(stack_t **stack, unsigned int line_number)
 	printf("%c\n", itoa(stack->n));
 }
 
-/**
+**
  * getPstr - prints the string starting at the top of the stack
  * @stack: stack
  * @line_number: line number
  * Return: void
- */
+ *
 
 void getPstr(stack_t **stack, unsigned int line_number)
 {
@@ -46,24 +46,7 @@ void getPstr(stack_t **stack, unsigned int line_number)
 	}
 }
 
-/**
- * getPint - prints the value at the top of the stack
- * @stack: stack
- * @line_number: line number
- * Return: void
- */
-
-void getPint(stack_t **stack, unsigned int line_number)
-{
-	if (!stack)
-	{
-		dprintf(STDERR_FILENO, ERR_PINT, line_number);
-		exit(EXIT_FAILURE);
-	}
-	printf("%d\n", stack->n);
-}
-
-/**
+**
  * getPop - removes the top element of the stack
  * @stack: stack
  * @line_number: line number
@@ -72,18 +55,21 @@ void getPint(stack_t **stack, unsigned int line_number)
 
 void getPop(stack_t **stack, unsigned int line_number)
 {
-	stack_t **tmp;
+	stack_t *tmp;
+	stack_t *cur = *stack;
 
-	if (!stack)
+	if (!cur)
 	{
 		dprintf(STDERR_FILENO, ERR_POP, line_number);
+		freeAll();
 		exit(EXIT_FAILURE);
 	}
-	tmp = *stack;
-	*stack = (*stack)->next;
-	if (*stack != NULL)
-		(*stack)->prev = NULL;
-	free(tmp);
+	if (cur->next != NULL)
+	{
+		tmp = cur->next;
+	}
+	free(cur);
+	*stack = tmp;
 }
 
 /**
@@ -95,16 +81,17 @@ void getPop(stack_t **stack, unsigned int line_number)
 
 void getSwap(stack_t **stack, unsigned int line_number)
 {
-	stack_t **tmp;
-	int len;
+	int n;
+	stack_t *tmp = *stack;
+	stack_t *cur;
 
-	len = dlistint_len(stack);
-	if (len < 2)
+	if (!tmp || !tmp->next)
 	{
 		dprintf(STDERR_FILENO, ERR_SWAP, line_number);
 		exit(EXIT_FAILURE);
 	}
-	tmp->n = stack->n;
-	stack->n = stack->next->n;
-	stack->next->n = tmp->n;
+	cur = tmp->next;
+	n = tmp->n;
+	tmp->n = cur->n;
+	cur->n = n;
 }
