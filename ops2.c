@@ -39,10 +39,6 @@ void getPstr(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (!tmp)
-	{
-		printf("\n");
-	}
 	while (tmp && tmp->n)
 	{
 		if (tmp->n < 0 || tmp->n > 127)
