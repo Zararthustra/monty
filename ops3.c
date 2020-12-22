@@ -23,19 +23,17 @@ void getNop(stack_t **stack, unsigned int line_number)
 void getRotl(stack_t **stack, unsigned int line_number)
 {
 	int n;
-	stack_t *tmp = *stack, *cur;
+	stack_t *tmp = *stack;
 
 	(void)line_number;
 
 	if (tmp && tmp->next)
 	{
-		cur = tmp->next;
 		n = tmp->n;
 		while (tmp->next)
 		{
-			tmp->n = cur->n;
-			tmp = cur;
-			cur = tmp->next;
+			tmp->n = tmp->next->n;
+			tmp = tmp->next;
 		}
 		tmp->n = n;
 	}
@@ -55,7 +53,7 @@ void getRotr(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (tmp)
+	if (tmp && tmp->next)
 	{
 		while (tmp->next)
 			tmp = tmp->next;
