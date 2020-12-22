@@ -106,6 +106,8 @@ void freeAll(void);
 /* getOps.c module */
 void getPush(stack_t **stack, unsigned int line_number);
 void getPall(stack_t **stack, unsigned int line_number);
+void getQueue(stack_t **stack, unsigned int line_number);
+void getStack(stack_t **stack, unsigned int line_number);
 
 /* ops.c module*/
 void getAdd(stack_t **stack, unsigned int line_number);

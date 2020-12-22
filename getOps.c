@@ -39,6 +39,34 @@ void getPall(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * getQueue - sets the format of the data to a queue (FIFO).
+ * @stack: head of the stack
+ * @line_number: line number
+ * Return: void
+ */
+void getQueue(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	(void)stack;
+
+	data.queue = 1;
+}
+
+/**
+ * getStack - sets the format of the data to a stack (LIFO).
+ * @stack: head of the stack
+ * @line_number: line number
+ * Return: void
+ */
+void getStack(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	(void)stack;
+
+	data.queue = 0;
+}
+
+/**
  * getPint - prints the value at the top of the stack
  * @stack: stack
  * @line_number: line number
