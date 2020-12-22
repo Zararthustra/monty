@@ -7,7 +7,7 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 # The monty program
 
 * Usage: `monty file`
-
+** where `file` is the path to the file containing Monty byte code
 ## Learning Objectives
 
 * What do LIFO and FIFO mean
