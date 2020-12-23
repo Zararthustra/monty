@@ -24,6 +24,44 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 - If you cant malloc anymore, print the error message `Error: malloc failed`, followed by a new line, and exit with status `EXIT_FAILURE`
 - You have to use `malloc` and `free` and are not allowed to use any other function from `man malloc` (realloc, calloc, )
 
+## Example of bytecode
+
+- There is not more than one instruction per line. There can be any number of spaces before or after the opcode and its argument
+```
+$ cat -e bytecodes/000.m
+push 0$
+push 1$
+push 2$
+  push 3$
+                   pall    $
+push 4$
+    push 5    $
+      push    6        $
+pall$
+$
+```
+
+- Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account
+```
+$ cat -e bytecodes/001.m
+push 0 Push 0 onto the stack$
+push 1 Push 1 onto the stack$
+$
+push 2$
+  push 3$
+                   pall    $
+$
+$
+                           $
+push 4$
+$
+    push 5    $
+      push    6        $
+$
+pall This is the end of our program. Monty is awesome!$
+$
+```
+
 # Usage
 
 The code is compiled this way:
