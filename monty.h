@@ -14,7 +14,6 @@
 #include <fcntl.h>
 
 #define DELIMITERS " \t\r\n\v\f"
-#define INIT_DATA {NULL, NULL, NULL, 1, NULL, NULL, 0, 0}
 
 #define USAGE "USAGE: monty file\n"
 #define ERR_FILE "Error: Can't open file %s\n"
@@ -74,7 +73,6 @@ typedef struct instruction_s
  * @lineN: line number
  * @cmd: command
  * @value: value
- * @numW: number of
  * @queue: 1 if queue
  * Description: global struct with program info
  */
@@ -86,7 +84,6 @@ typedef struct data_s
 	unsigned int lineN;
 	char *cmd;
 	char *value;
-	int numW;
 	int queue;
 } data_t;
 
