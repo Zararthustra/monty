@@ -28,7 +28,6 @@ void initData(void)
 	data.lineN = 1;
 	data.cmd = NULL;
 	data.value = NULL;
-	data.numW = 0;
 	data.queue = 0;
 }
 
